@@ -7,7 +7,8 @@ function App() {
   const [charAllowed, setCharAllowed]=useState(false)
   const [length, setLength]=useState(9)
 
-  const passwordGenerator = useCallback( ()=>{
+  // useCallback(fn, dependecies in array) is used to store the specified function in the cache when it's being re-rendered several times.
+    const passwordGenerator = useCallback( ()=>{
     let pass=""
     let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
@@ -21,15 +22,17 @@ function App() {
     }
     setPassword(pass)
   },[numberAllowed,charAllowed,length] )
+  
+  // useRef hook creates a reference of the specified call (here communicates with line 53)
+    const passwordRef = useRef(null)
 
-  const passwordRef = useRef(null)
-
-   const copyPasswordToClipboard = useCallback(() => {
+    const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 999);
     window.navigator.clipboard.writeText(password)
   }, [password])
 
+  // this useEffect hook will automatically call the password generating when the webpage loads
   useEffect( ()=>{
     passwordGenerator();
   },[length,charAllowed,numberAllowed] )
