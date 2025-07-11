@@ -4,7 +4,9 @@ import Board from './components/Board'
 
 const App = () => {
   return(
-    <Board/>
+    <>
+      <Board/>
+    </>
   )
 }
 
