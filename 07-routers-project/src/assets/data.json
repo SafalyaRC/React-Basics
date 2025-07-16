@@ -1,0 +1,16 @@
+{
+    "jobs":[
+        {
+            "id":1,
+            "title":"Sr. React Dev",
+            "salary": 200000,
+            "location":"UK"
+        },
+        {
+            "id":2,
+            "title":"Sr. Java Dev",
+            "salary": 500000,
+            "location":"US"
+        }
+    ]
+}
